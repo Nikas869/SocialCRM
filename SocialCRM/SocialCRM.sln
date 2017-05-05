@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SocialCRM.Server", "SocialCRM.Server", "{0B1CF017-4060-4167-8B8D-BE0090A356A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SocialCRM.Web", "SocialCRM.Web", "{FE707EFC-EAF4-4689-9237-C01E60120036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialCRM.Web.Client", "SocialCRM.Web.Client\SocialCRM.Web.Client.csproj", "{DC8C57FD-8889-4B4C-A4F6-657B19D59002}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialCRM.Domain", "SocialCRM.Domain\SocialCRM.Domain.csproj", "{9DA2E0BA-6EC9-40F7-8EFD-A626F9CE9BD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialCRM.Server.DataAccess", "SocialCRM.Server.DataAccess\SocialCRM.Server.DataAccess.csproj", "{DC26DC4B-33F7-486B-BFA3-EE97199204FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialCRM.Server.Core", "SocialCRM.Server.Core\SocialCRM.Server.Core.csproj", "{BB729A77-CE35-4250-A37B-7D8C10E23037}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialCRM.Server.Api", "SocialCRM.Server.Api\SocialCRM.Server.Api.csproj", "{AAD926BD-23B5-4CE4-91CE-EFCA46A948F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialCRM.Dtos", "SocialCRM.Dtos\SocialCRM.Dtos.csproj", "{063CDB24-F4E3-4035-9C6D-BF08FDD102E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC8C57FD-8889-4B4C-A4F6-657B19D59002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC8C57FD-8889-4B4C-A4F6-657B19D59002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC8C57FD-8889-4B4C-A4F6-657B19D59002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC8C57FD-8889-4B4C-A4F6-657B19D59002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DA2E0BA-6EC9-40F7-8EFD-A626F9CE9BD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DA2E0BA-6EC9-40F7-8EFD-A626F9CE9BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DA2E0BA-6EC9-40F7-8EFD-A626F9CE9BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DA2E0BA-6EC9-40F7-8EFD-A626F9CE9BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC26DC4B-33F7-486B-BFA3-EE97199204FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC26DC4B-33F7-486B-BFA3-EE97199204FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC26DC4B-33F7-486B-BFA3-EE97199204FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC26DC4B-33F7-486B-BFA3-EE97199204FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB729A77-CE35-4250-A37B-7D8C10E23037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB729A77-CE35-4250-A37B-7D8C10E23037}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB729A77-CE35-4250-A37B-7D8C10E23037}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB729A77-CE35-4250-A37B-7D8C10E23037}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAD926BD-23B5-4CE4-91CE-EFCA46A948F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAD926BD-23B5-4CE4-91CE-EFCA46A948F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAD926BD-23B5-4CE4-91CE-EFCA46A948F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAD926BD-23B5-4CE4-91CE-EFCA46A948F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{063CDB24-F4E3-4035-9C6D-BF08FDD102E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{063CDB24-F4E3-4035-9C6D-BF08FDD102E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{063CDB24-F4E3-4035-9C6D-BF08FDD102E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{063CDB24-F4E3-4035-9C6D-BF08FDD102E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DC8C57FD-8889-4B4C-A4F6-657B19D59002} = {FE707EFC-EAF4-4689-9237-C01E60120036}
+		{DC26DC4B-33F7-486B-BFA3-EE97199204FD} = {0B1CF017-4060-4167-8B8D-BE0090A356A8}
+		{BB729A77-CE35-4250-A37B-7D8C10E23037} = {0B1CF017-4060-4167-8B8D-BE0090A356A8}
+		{AAD926BD-23B5-4CE4-91CE-EFCA46A948F0} = {0B1CF017-4060-4167-8B8D-BE0090A356A8}
+	EndGlobalSection
+EndGlobal
