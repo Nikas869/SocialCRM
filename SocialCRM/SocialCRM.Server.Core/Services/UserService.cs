@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using SocialCRM.Domain.Entities;
+using SocialCRM.Dtos.Models;
 using SocialCRM.Server.Core.Interfaces;
 using SocialCRM.Server.DataAccess.UnitsOfWork;
 
@@ -16,11 +18,13 @@ namespace SocialCRM.Server.Core.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<ApplicationUser> GetByIdAsync(string userId)
+        public async Task<UserDto> GetByIdAsync(string userId)
         {
-            return await this.unitOfWork
+            var user = await this.unitOfWork
                 .GetRepository<ApplicationUser>()
                 .GetByIdAsync(userId);
+
+            return Mapper.Map<ApplicationUser, UserDto>(user);
         }
 
         public bool IsEmailAvailable(string email)

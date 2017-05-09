@@ -15,18 +15,22 @@ namespace SocialCRM.Server.Api
         public void Configuration(IAppBuilder app)
         {
             HttpConfiguration config = new HttpConfiguration();
-            WebApiConfig.Register(config);
-
             var builder = new ContainerBuilder();
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
+            // Register Web Api
+            WebApiConfig.Register(config);
+            // Regtister Web Api Controllers
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            // Autofac
             AutofacConfig.Configure(builder);
+            // AutoMapper
+            AutoMapperConfig.Configure();
 
             var conatiner = builder.Build();
-
+            // Dependency resolver
             var resolver = new AutofacWebApiDependencyResolver(conatiner);
             config.DependencyResolver = resolver;
-
+            // Configuring app
             app.UseAutofacMiddleware(conatiner);
             app.UseAutofacWebApi(config);
             ConfigureAuth(app);

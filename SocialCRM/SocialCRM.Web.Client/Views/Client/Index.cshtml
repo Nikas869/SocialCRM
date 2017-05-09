@@ -1,0 +1,11 @@
+﻿@model IList<SocialCRM.Dtos.Models.ClientDto>
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>title</h2>
+@foreach (var client in Model)
+{
+    <p>@client.Name</p>
+}

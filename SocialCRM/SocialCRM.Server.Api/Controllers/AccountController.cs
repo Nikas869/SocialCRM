@@ -10,12 +10,12 @@ namespace SocialCRM.Server.Api.Controllers
     public class AccountController : ApiController
     {
         private readonly IUserAccountService userAccountService;
-        private readonly IRolesService rolesService;
+        private readonly IUserService userService;
 
-        public AccountController(IUserAccountService userAccountService, IRolesService rolesService)
+        public AccountController(IUserAccountService userAccountService, IUserService userService)
         {
             this.userAccountService = userAccountService;
-            this.rolesService = rolesService;
+            this.userService = userService;
         }
 
         // POST api/Account/Register
@@ -38,6 +38,15 @@ namespace SocialCRM.Server.Api.Controllers
             }
 
             return Ok();
+        }
+
+        [Authorize]
+        [Route("GetInfo")]
+        public async Task<UserDto> GetInfo()
+        {
+            var user = await userService.GetByIdAsync(User.Identity.GetUserId());
+
+            return user;
         }
 
         private IHttpActionResult GetErrorResult(IdentityResult result)

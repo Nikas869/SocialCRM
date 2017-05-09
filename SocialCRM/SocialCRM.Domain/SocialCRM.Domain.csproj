@@ -43,13 +43,21 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\ApplicationUser.cs" />
+    <Compile Include="Entities\Call.cs" />
+    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\Lead.cs" />
+    <Compile Include="Entities\UserTask.cs" />
+    <Compile Include="Misc\CallStatus.cs" />
+    <Compile Include="Misc\LeadStatus.cs" />
     <Compile Include="Misc\Roles.cs" />
+    <Compile Include="Misc\UserTaskStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

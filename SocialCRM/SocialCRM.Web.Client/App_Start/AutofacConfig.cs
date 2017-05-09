@@ -4,6 +4,7 @@ using Autofac.Integration.Mvc;
 using System.Reflection;
 using System.Web.Mvc;
 using SocialCRM.Web.Client.Authentication;
+using SocialCRM.Web.Client.Services;
 
 namespace SocialCRM.Web.Client
 {
@@ -16,7 +17,9 @@ namespace SocialCRM.Web.Client
             // Regiser MVC controllers
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
 
-            builder.Register(authencticationManager => new AuthenticationManager(ConfigurationManager.AppSettings["WebApiUri"]));
+            var webApiUrl = ConfigurationManager.AppSettings["WebApiUri"];
+            builder.Register(authencticationManager => new AuthenticationManager(webApiUrl));
+            builder.Register(clientService => new ClientService(webApiUrl));
 
             var container = builder.Build();
 

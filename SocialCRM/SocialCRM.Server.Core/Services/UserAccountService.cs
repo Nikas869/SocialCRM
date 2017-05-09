@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -20,7 +21,7 @@ namespace SocialCRM.Server.Core.Services
 
         public async Task<IdentityResult> RegisterAsync(RegisterDto registerDto)
         {
-            await this.CheckUniqueness(registerDto.Email, registerDto.Email);
+            await this.CheckUniqueness(registerDto.Email);
             await this.ValidatePassword(registerDto.Password);
 
             var user = new ApplicationUser
@@ -28,7 +29,8 @@ namespace SocialCRM.Server.Core.Services
                 Email = registerDto.Email,
                 UserName = registerDto.Email,
                 FirstName = registerDto.FirstName,
-                LastName = registerDto.LastName
+                LastName = registerDto.LastName,
+                Avatar = ConfigurationManager.AppSettings["defaultAvatarPath"]
             };
 
             IdentityResult result = await this.userManager.CreateAsync(user, registerDto.Password);
@@ -43,22 +45,12 @@ namespace SocialCRM.Server.Core.Services
             return user;
         }
 
-        //public async Task<IdentityResult> ChangePasswordAsync(ChangePasswordDto changePasswordDto)
-        //{
-        //    IdentityResult result = await this.userManager.ChangePasswordAsync(
-        //        changePasswordDto.UserId,
-        //        changePasswordDto.OldPassword,
-        //        changePasswordDto.NewPassword);
-
-        //    return result;
-        //}
-
         public async Task<IList<string>> GetUserRoles(string userId)
         {
             return await this.userManager.GetRolesAsync(userId);
         }
 
-        private async Task CheckUniqueness(string userName, string email)
+        private async Task CheckUniqueness(string email)
         {
             ApplicationUser existingUser = null;
             existingUser = await this.userManager.FindByEmailAsync(email);
@@ -66,13 +58,6 @@ namespace SocialCRM.Server.Core.Services
             if (existingUser != null)
             {
                 throw new EmailAlreadyExistsException();
-            }
-
-            existingUser = await this.userManager.FindByNameAsync(userName);
-
-            if (existingUser != null)
-            {
-                throw new UserNameAlreadyExistsException();
             }
         }
 

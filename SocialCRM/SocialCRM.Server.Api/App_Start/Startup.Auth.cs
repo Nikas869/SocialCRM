@@ -22,9 +22,7 @@ namespace SocialCRM.Server.Api
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
-#if DEBUG
                 AllowInsecureHttp = true
-#endif
             };
 
             // Enable the application to use bearer tokens to authenticate users

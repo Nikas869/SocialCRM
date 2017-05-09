@@ -60,14 +60,14 @@ namespace SocialCRM.Web.Client.Controllers
         }
 
         // GET: Account/SignIn
-        public ActionResult SignIn()
+        public ActionResult Login()
         {
             return View();
         }
 
         // POST: Account/SignIn
         [HttpPost]
-        public async Task<ActionResult> SignIn(SignInModel model, string redirectUrl = null)
+        public async Task<ActionResult> Login(SignInModel model, string redirectUrl = null)
         {
             if (!ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace SocialCRM.Web.Client.Controllers
                 var claims = new[]
                 {
                     new Claim(ClaimTypes.Name, result.UserName), //Name is the default name claim type, and UserName is the one known also in Web API.
-                    new Claim(ClaimTypes.NameIdentifier, result.UserName) //If you want to use User.Identity.GetUserId in Web API, you need a NameIdentifier claim.
+                    new Claim(ClaimTypes.NameIdentifier, result.UserName), //If you want to use User.Identity.GetUserId in Web API, you need a NameIdentifier claim.
                 };
 
                 //Generate a new ClaimsIdentity, using the DefaultAuthenticationTypes.ApplicationCookie authenticationType.
@@ -139,7 +139,7 @@ namespace SocialCRM.Web.Client.Controllers
         }
 
         [Authorize]
-        public ActionResult SignOut()
+        public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
 

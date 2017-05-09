@@ -14,6 +14,14 @@ namespace SocialCRM.Server.DataAccess
             Database.SetInitializer(new ApplicationDbInitializer());
         }
 
+        public DbSet<Client> Clients { get; set; }
+
+        public DbSet<Lead> Leads { get; set; }
+
+        public DbSet<Call> Calls { get; set; }
+
+        public DbSet<UserTask> UserTasks { get; set; }
+
         private static string GetConnectionString(string connectionName)
         {
             return ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;

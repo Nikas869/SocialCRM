@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
-using SocialCRM.Domain.Entities;
+using SocialCRM.Dtos.Models;
 
 namespace SocialCRM.Server.Core.Interfaces
 {
     public interface IUserService
     {
-        Task<ApplicationUser> GetByIdAsync(string userId);
+        Task<UserDto> GetByIdAsync(string userId);
         bool IsEmailAvailable(string email);
     }
 }
