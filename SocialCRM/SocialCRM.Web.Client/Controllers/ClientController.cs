@@ -25,7 +25,7 @@ namespace SocialCRM.Web.Client.Controllers
         // GET: Client
         public async Task<ActionResult> Index()
         {
-            var clients = await clientService.GetAsync("/api/Client", User.Identity.Name);
+            var clients = await clientService.GetListAsync("/api/Client", User.Identity.Name);
 
             return View(clients);
         }

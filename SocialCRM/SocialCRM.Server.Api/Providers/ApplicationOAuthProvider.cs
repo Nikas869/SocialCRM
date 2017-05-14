@@ -34,13 +34,10 @@ namespace SocialCRM.Server.Api.Providers
                 throw new BearerAuthenticationException();
             }
 
-            IEnumerable<string> userRoles = await userAccountService.GetUserRoles(user.Id);
-
             // Create identity
             ClaimsIdentity oAuthIdentity = user.GenerateUserIdentity(OAuthDefaults.AuthenticationType);
-            oAuthIdentity.AddClaim(new Claim(ClaimTypes.Role, string.Join(", ", userRoles)));
 
-            AuthenticationProperties properties = CreateProperties(user.UserName, userRoles);
+            AuthenticationProperties properties = CreateProperties(user);
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
 
             // Token generation
@@ -83,12 +80,15 @@ namespace SocialCRM.Server.Api.Providers
             return Task.FromResult<object>(null);
         }
 
-        public static AuthenticationProperties CreateProperties(string userName, IEnumerable<string> userRoles)
+        public static AuthenticationProperties CreateProperties(ApplicationUser user)
         {
             IDictionary<string, string> data = new Dictionary<string, string>
             {
-                { "userName", userName },
-                { "roles", string.Join(", ", userRoles) }
+                { "email", user.Email },
+                { "first_name", user.FirstName },
+                { "last_name", user.LastName },
+                { "avatar", user.Avatar },
+                { "id", user.Id }
             };
 
             return new AuthenticationProperties(data);

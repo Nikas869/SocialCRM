@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -43,11 +42,6 @@ namespace SocialCRM.Server.Core.Services
             ApplicationUser user = await this.userManager.FindAsync(loginDto.Email, loginDto.Password);
 
             return user;
-        }
-
-        public async Task<IList<string>> GetUserRoles(string userId)
-        {
-            return await this.userManager.GetRolesAsync(userId);
         }
 
         private async Task CheckUniqueness(string email)

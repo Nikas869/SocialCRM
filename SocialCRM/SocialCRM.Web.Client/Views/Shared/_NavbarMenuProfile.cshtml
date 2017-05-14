@@ -1,0 +1,36 @@
+﻿@using System.Security.Claims
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <img src="" class="user-image" alt="User Image">
+        <span class="hidden-xs"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <!-- User image -->
+        <li class="user-header">
+            <img src="@{ ClaimsPrincipal.Current.Claims.Where(c => c.Type == "Avatar").Select(c => c.Value).SingleOrDefault(); }" class="img-circle" alt="User Image">
+            <p>
+                @{
+                    ClaimsPrincipal.Current.Claims.Where(c => c.Type == "Name").Select(c => c.Value).SingleOrDefault();
+                    ((ClaimsIdentity)User.Identity).FindFirstValue("Name");
+                    ((ClaimsIdentity)User.Identity).FindFirstValue("Surname");
+                }
+            </p>
+        </li>
+        <!-- Menu Footer-->
+        <li class="user-footer">
+            <div class="pull-left">
+                <!--<a href="#" class="btn btn-default btn-flat">Profile</a>-->
+            </div>
+            <div class="pull-right">
+                <a href="@Url.Action("Logout", "Account")" class="btn btn-default btn-flat">Sign out</a>
+            </div>
+        </li>
+    </ul>
+}
+else
+{
+    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+}

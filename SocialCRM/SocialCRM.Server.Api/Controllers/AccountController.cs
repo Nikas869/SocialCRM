@@ -41,8 +41,8 @@ namespace SocialCRM.Server.Api.Controllers
         }
 
         [Authorize]
-        [Route("GetInfo")]
-        public async Task<UserDto> GetInfo()
+        [Route("GetCurrentUserInfo")]
+        public async Task<UserDto> GetCurrentUserInfo()
         {
             var user = await userService.GetByIdAsync(User.Identity.GetUserId());
 

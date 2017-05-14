@@ -20,6 +20,7 @@ namespace SocialCRM.Web.Client
             var webApiUrl = ConfigurationManager.AppSettings["WebApiUri"];
             builder.Register(authencticationManager => new AuthenticationManager(webApiUrl));
             builder.Register(clientService => new ClientService(webApiUrl));
+            builder.Register(userService => new UserService(webApiUrl));
 
             var container = builder.Build();
 

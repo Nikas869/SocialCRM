@@ -15,8 +15,20 @@ namespace SocialCRM.Web.Client.Models
         [JsonProperty("expires_in")]
         public uint ExpiresIn { get; set; }
 
-        [JsonProperty("userName")]
-        public string UserName { get; set; }
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
+
+        [JsonProperty("avatar")]
+        public string Avatar { get; set; }
+
+        [JsonProperty("id")]
+        public string UserId { get; set; }
 
         [JsonProperty(".issued")]
         public DateTimeOffset Issued { get; set; }

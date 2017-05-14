@@ -86,13 +86,25 @@ namespace SocialCRM.Web.Client.Controllers
                 //But before we can do that, we need a ClaimsIdentity that can be authenticated in Web API.
                 var claims = new[]
                 {
-                    new Claim(ClaimTypes.Name, result.UserName), //Name is the default name claim type, and UserName is the one known also in Web API.
-                    new Claim(ClaimTypes.NameIdentifier, result.UserName), //If you want to use User.Identity.GetUserId in Web API, you need a NameIdentifier claim.
+                    new Claim(ClaimTypes.Name, result.FirstName),
+                    new Claim(ClaimTypes.Surname, result.LastName),
+                    new Claim(ClaimTypes.Email, result.Email),
+                    new Claim(ClaimTypes.NameIdentifier, result.UserId),
+                    new Claim("Avatar", result.Avatar)
                 };
+
+                //var auth = HttpContext.GetOwinContext().Authentication;
+                //auth.SignIn(new AuthenticationProperties
+                //{
+                //    ExpiresUtc = result.Expires,
+                //    IsPersistent = model.RememberMe,
+                //    IssuedUtc = result.Issued,
+                //    RedirectUri = redirectUrl
+                //}, new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie));
 
                 //Generate a new ClaimsIdentity, using the DefaultAuthenticationTypes.ApplicationCookie authenticationType.
                 //This also matches what we've set up in Web API.
-                var authTicket = new AuthenticationTicket(new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie), 
+                var authTicket = new AuthenticationTicket(new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie),
                     new AuthenticationProperties
                     {
                         ExpiresUtc = result.Expires,
@@ -106,9 +118,9 @@ namespace SocialCRM.Web.Client.Controllers
 
                 //Protect this user data and add the extra properties. These need to be the same as in Web API!
                 byte[] protectedData = MachineKey.Protect(
-                    userData, 
-                    "Microsoft.Owin.Security.Cookies.CookieAuthenticationMiddleware", 
-                    DefaultAuthenticationTypes.ApplicationCookie, 
+                    userData,
+                    "Microsoft.Owin.Security.Cookies.CookieAuthenticationMiddleware",
+                    DefaultAuthenticationTypes.ApplicationCookie,
                     "v1");
 
                 //base64-encode this data.
